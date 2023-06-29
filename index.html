@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Token Generation</title>
+  <script>
+    function generateToken() {
+      const email = document.getElementById('email').value;
+      const url = `/generateToken?email=${email}`;
+
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('token').textContent = data;
+        })
+        .catch(error => {
+          console.error('Error generating token:', error);
+        });
+    }
+  </script>
+</head>
+<body>
+  <h1>Token Generation</h1>
+  <label for="email">Email:</label>
+  <input type="text" id="email">
+  <button onclick="generateToken()">Generate Token</button>
+  <br>
+  <br>
+  <div id="token"></div>
+</body>
+</html>
